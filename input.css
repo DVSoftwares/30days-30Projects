@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@source "./Colour Flipper/colour.html";
+@source "./Colour Flipper/colour.js";
+@source "./**/*.html";
+@source "./**/*.js";
