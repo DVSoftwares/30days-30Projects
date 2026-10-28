@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Digital Clock</title>
+        <link rel="stylesheet" href="../output.css"> 
+    </head>
+<body class = "flex flex-col min-h-screen justify-center items-center bg-neutral-900 p-4 font-sans text-neutral-100 antialiased selection:bg-cyan-500 selection:text-neutral-950">
+    <div class="absolute top-4 left-4 bg-cyan-500 rounded-full p-1">
+        <img src="../Images/DVS lg.png" class="h-8 w-auto" alt="Logo" bg-transparent>
+    </div>
+    <main class = "relative flex w-full max-w-xl flex-col items-center gap-6 rounded-2xl border border-neutral-800 bg-neutral-950 p-6 shadow-2xl backdrop-blur-xl sm:p-12 ">
+        <header class = "flex flex-col items-center gap-2 justify-between border-b border-neutral-800/80 pb-4 w-full">
+            <h1 class="text-xs font-semibold uppercase tracking-widest text-neutral-400">Digital Clock</h1>
+            <button id="formatToggle" class="rounded-full border border-amber-700 bg-neutral-800 px-3.5 py-1 text-xs font-medium text-neutral-300 transition-all hover:text-white active:scale-95 cursor-pointer">
+                Switch to 24-Hour
+            </button>
+        </header>
+
+    <div id="dateDisplay" class="text-sm text-neutral-400 font-medium tracking-wide sm:text-base">
+        Loading date...
+    </div>  
+    <div class="flex items-baseline justify-center gap-2 font-mono sm:gap-3">
+        <div id="timeDisplay" class="text-6xl font-extrabold tracking-tight text-cyan-400 sm:text-7xl md:text-8xl">
+            00:00:00
+        </div>
+        <span id="ampmBadge" class="text-lg font-bold uppercase text-neutral-400 sm:text-2xl">
+            AM
+        </span>
+    </div> 
+    <footer class="flex items-center gap-2 pt-2 text-xs text-neutral-500">
+        <span class="relative flex h-2 w-2">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-cyan-500"></span>
+        </span>
+        <span>Live System Time</span>
+    </footer>
+
+
+    </main>
+<script src="clock.js"></script>
+</body>       
+</html>
