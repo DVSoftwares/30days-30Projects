@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dropdown</title>
+        <link rel="stylesheet" href="../output.css">
+    </head>
+    <body class="flex min-h-screen flex-col items-center justify-center bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+        <main class="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl sm:p-12">
+         
+            <header class="mb-8 text-center">
+                <span class="text-sm font-bold uppercase tracking-widest text-indigo-400">Knowlede Base</span>
+                <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Frequently Asked Questions</h1>
+                <p class="mt-2 text-sm text-slate-400">Everything you need to know about the 30-day challenge setup.</p>
+            </header>
+
+            <div class="space-y-4" id="faqContainer">
+        
+             <!--Item 1-->   
+            <article class="faq-item rounded-2xl border border-slate-800 bg-slate-900/50 transition-all duration-300 hover:border-slate-700">
+             <button class="faq-btn flex w-full items-center justify-between gap-4 p-5 text-left cursor-pointer">
+                <span>Why use a single root Tailwind installation?</span>
+                <span class="chevron inline-block text-xs text-slate-400 transition-transform duration-300">&#9660;</span>
+             </button>
+             <div class="faq-answer grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+                <div class="overflow-hidden">
+                    <p class="text-slate-400 text-sm pb-5 px-5" >
+                        Using a single root Tailwind installation allows you to manage your styles in one place,
+                        making it easier to maintain consistency across your project.
+                        It also simplifies the build process and reduces the risk of version conflicts between different parts of your application.
+                    </p>
+                </div>
+             </div>
+            </article>
+
+            <!--Item 2--> 
+            <article class="faq-item rounded-2xl border border-slate-800 bg-slate-900/50 transition-all duration-300 hover:border-slate-700">
+             <button class="faq-btn flex w-full items-center justify-between gap-4 p-5 text-left cursor-pointer">
+                <span >How does the relative path <code class="text-indigo-400">../output.css </code>work?</span>
+                <span class="chevron inline-block text-xs text-slate-400 transition-transform duration-300">&#9660;</span>
+             </button>
+             <div class="faq-answer grid grid-rows-[0fr] transition-all duration-300 ease-in-out">
+                <div class="overflow-hidden"    >
+                    <p class="text-slate-400 text-sm pb-5 px-5">
+                        The relative path <code class="text-indigo-400">../output.css</code> points to the <code class="text-indigo-400">output.css</code>
+                        file located one directory level above the current HTML file. 
+                        This allows the HTML file to access the compiled Tailwind CSS styles from the specified location.  
+                    </p>
+                </div>
+             </div>
+            </article>
+
+            <!--Item 3--> 
+            <article class="faq-item rounded-2xl border border-slate-800 bg-slate-900/50 transition-all duration-300 hover:border-slate-700">
+             <button class="faq-btn flex w-full items-center justify-between gap-4 p-5 text-left cursor-pointer">
+                <span>What triggers the CLI watcher to rebuild?</span>
+                <span class="chevron inline-block text-xs text-slate-400 transition-transform duration-300">&#9660;</span>
+             </button>
+             <div class="faq-answer grid grid-rows-[0fr] transition-all duration-300 ease-in-out ">
+                <div class="overflow-hidden">
+                    <p class="text-slate-400 text-sm pb-5 px-5">
+                        The CLI watcher is triggered to rebuild whenever it detects changes in the source files that are being watched.
+                        This includes modifications to your HTML, JavaScript, or any other files that are part of your Tailwind project.
+                        When a change is detected, the watcher automatically recompiles the CSS to reflect the updates.
+                        <code class="text-indigo-400"> npm run dev</code> <-To run the watcher in development mode.
+                    </p>
+                </div>
+             </div>
+            </article>
+            
+            </div>
+        </main>
+      <script src="Dropdown.js"></script>  
+    </body>
+</html>
