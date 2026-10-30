@@ -34,7 +34,7 @@ function updateClock() {
     }
     timeDisplay.textContent = `${hours}:${minutes}:${seconds}`;
 }
-formatToggle.addEventListener("change", () => {
+formatToggle.addEventListener("click", () => {
     is24HourFormat = !is24HourFormat;
     formatToggle.textContent = is24HourFormat ? "Switch to 12-hour format" : "Switch to 24-hour format";
     updateClock();
