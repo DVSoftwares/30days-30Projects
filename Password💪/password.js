@@ -1,76 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Day 4 - Password Strength Indicator</title>
-  <!-- Link to the shared compiled stylesheet -->
-  <link rel="stylesheet" href="../output.css" />
-</head>
-<body class="flex min-h-screen items-center justify-center bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
+const passwordInput = document.getElementById('passwordInput');
+const toggleButton = document.getElementById('toggleButton');
+const strengthBar = document.getElementById('StrengthBar');
+const strengthLabel = document.getElementById('StrengthLabel');
+const ruleLength = document.getElementById('ruleLength');
+const ruleUpper = document.getElementById('ruleUpper');
+const ruleNumber = document.getElementById('ruleNumber');
+const ruleSpecial = document.getElementById('ruleSpecial');
 
-  <main class="w-full max-w-md rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
-    
-    <!-- Header -->
-    <header class="mb-6 text-center">
-      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Security Check</span>
-      <h1 class="mt-2 text-2xl font-extrabold tracking-tight text-white">Create a Password</h1>
-      <p class="mt-1 text-xs text-slate-400">Enter a secure password to verify its strength.</p>
-    </header>
+toggleButton.addEventListener('click', () => {
+    const isPassword = passwordInput.getAttribute('type') === 'password';
+    passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+    toggleButton.textContent = isPassword ? 'Hide' : 'Show';
+});
 
-    <!-- Password Input Field -->
-    <div class="relative mb-5">
-      <input
-        type="password"
-        id="password-input"
-        placeholder="Type your password..."
-        class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-4 py-3 pr-20 text-sm text-white placeholder-slate-500 transition focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-      />
-      <!-- Show/Hide Toggle Button -->
-      <button
-        type="button"
-        id="toggle-visibility"
-        class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-xs font-semibold text-slate-400 transition hover:text-white cursor-pointer"
-      >
-        Show
-      </button>
-    </div>
+function updateRulesStatus(ruleElement, isValid) {
+    const statusIcon = ruleElement.querySelector('.status-icon');
+    if (isValid) {
+        ruleElement.classList.remove('text-slate-500');
+        ruleElement.classList.add('text-slate-400');
+        isSecureContext.textContent = '&check;' ;
+    } else {
+        ruleElement.classList.remove('text-slate-400');
+        ruleElement.classList.add('text-slate-500');
+        statusIcon.textContent = '\u2713';
+    }
+}
 
-    <!-- Strength Meter Visual Bar -->
-    <div class="mb-4">
-      <div class="flex items-center justify-between text-xs font-medium text-slate-400 mb-1.5">
-        <span>Strength</span>
-        <span id="strength-label" class="font-semibold text-slate-500">None</span>
-      </div>
-      <!-- Track -->
-      <div class="h-2 w-full overflow-hidden rounded-full bg-slate-800">
-        <!-- Animated Bar Fill -->
-        <div id="strength-bar" class="h-full w-0 transition-all duration-300 ease-out bg-transparent"></div>
-      </div>
-    </div>
+passwordInput.addEventListener('input', () => {
+    const val = passwordInput.value;
 
-    <!-- Criteria Checklist -->
-    <ul class="space-y-2 rounded-xl border border-slate-800/80 bg-slate-950/40 p-4 text-xs font-medium">
-      <li id="rule-length" class="flex items-center gap-2 text-slate-500 transition-colors">
-        <span class="status-icon inline-block w-4 text-center">○</span>
-        <span>At least 8 characters</span>
-      </li>
-      <li id="rule-upper" class="flex items-center gap-2 text-slate-500 transition-colors">
-        <span class="status-icon inline-block w-4 text-center">○</span>
-        <span>Includes uppercase letter (A-Z)</span>
-      </li>
-      <li id="rule-number" class="flex items-center gap-2 text-slate-500 transition-colors">
-        <span class="status-icon inline-block w-4 text-center">○</span>
-        <span>Includes a number (0-9)</span>
-      </li>
-      <li id="rule-special" class="flex items-center gap-2 text-slate-500 transition-colors">
-        <span class="status-icon inline-block w-4 text-center">○</span>
-        <span>Includes a special character (!@#$%^&*)</span>
-      </li>
-    </ul>
+    const hasLength = val.length >= 8;
+    const hasUpper = /[A-Z]/.test(val);
+    const hasNumber = /[0-9]/.test(val);
+    const hasSpecial = /[^A-Za-z0-9]/.test(val);
 
-  </main>
+    updateRulesStatus(ruleLength, hasLength);
+    updateRulesStatus(ruleUpper, hasUpper);
+    updateRulesStatus(ruleNumber, hasNumber);
+    updateRulesStatus(ruleSpecial, hasSpecial);
 
-  <script src="script.js"></script>
-</body>
-</html>
+    const score = [hasLength, hasUpper, hasNumber, hasSpecial].filter(Boolean).length;
+
+    strengthBar.className = "h-full transition-all duration-300 ease-out";
+
+    if(val.length === 0) {
+        strengthLabel.textContent = 'None';
+        strengthLabel.className = 'font-semibold text-slate-500';
+        strengthBar.classList.add('w-0', 'bg-transparent');
+        return;
+    }
+
+    switch(score) {
+        case 1:
+            strengthLabel.textContent = 'Weak';
+            strengthLabel.className = 'font-semibold text-rose-500';
+            strengthBar.classList.add('w-1/4', 'bg-transparent');
+            break;
+        
+        case 2:
+            strengthLabel.textContent = 'Fair';
+            strengthLabel.className = 'font-semibold text-amber-500';
+            strengthBar.classList.add('w-2/4', 'bg-amber-500');
+            break;
+
+        case 3:
+            strengthLabel.textContent = 'Good';
+            strengthLabel.className = 'font-semibold text-sky-400';
+            strengthBar.classList.add('w-3/4', 'bg-sky-400');
+            break;
+
+        case 4:
+            strengthLabel.textContent = 'Strong';
+            strengthLabel.className = 'font-semibold text-emerald-400';
+            strengthBar.classList.add('w-full', 'bg-emerald-400');
+            break;
+
+        default:
+            strengthLabel.textContent = 'Weak';
+            strengthLabel.className = 'font-semibold text-rose-500';
+            strengthBar.classList.add('w-1/12', 'bg-rose-500');
+            break;               
+}
+
+});
