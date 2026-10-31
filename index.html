@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>30 Days of 30 Projects - Tailwind CSS & Vanilla JS</title>
+        <link rel="stylesheet" href="./output.css">
+    </head>
+<body class="min-h-screen bg-slate-950 p-6 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white sm:p-12">
+    <div class="absolute top-4 left-4  rounded-full p-1">
+        <img src="../Images/DVS lg white.png" class="h-8 w-auto" alt="Logo" bg-transparent>
+    </div>
+    <div class="mx-auto max-w-6xl">
+        <header class="mb-12 text-center sm:mb-16">
+            <div class="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-400">
+                <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-indigo-500"></span>
+                </span>
+                Challenge In Progress
+            </div>
+
+            <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+                30 Days <span class="text-indigo-400">30 Projects</span>
+            </h1>
+            <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-400 sm:text-base">
+                A progressive collection of mini web applications built with vanilla Javascript and Tailwind Css v4.
+            </p>
+
+            <div class="mt-8 flex items-center justify-center gap-6 text-sm">
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-5 py-3">
+                    <span id="completedCount" class="text-xl font-bold text-indigo-400">4</span>
+                    <span class="text-slate-500">/30 Completed</span>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/50 px-5 py-3">
+                    <span id="progressPercent" class="text-xl font-bold text-emerald-400">13%</span>
+                    <span class="text-slate-500">Completed</span>
+                </div>
+            </div>
+        </header>
+<!--Search/Filter Bar-->
+        <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="relative w-full max-w-sm">
+                <input
+                type="text"
+                id="searchInput" progressPercent.textContent = `${Math.round((completed / 30) * 100)}%`;
+                placeholder="Search Projects..."
+                class="w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-2.5 text-sm text-white placeholder-slate-500 transition focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button data-filter="all" class="filter-btn rounded-lg bg-indigo-600 px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-indigo-500 cursor-pointer">
+                    All
+                </button>
+
+                <button data-filter="completed" class="filter-btn rounded-lg border border-slate-800 bg-slate-900 px-3.5 py-1.5 text-xs font-semibold text-slate-400 transition hover:text-white cursor-pointer">
+                    Completed
+                </button>
+
+                <button data-filter="upcoming" class="filter-btn rounded-lg border border-slate-800 bg-slate-900 px-3.5 py-1.5 text-xs font-semibold text-slate-400 transition hover:text-white cursor-pointer">
+                    Upcoming
+                </button>
+            </div>
+        </div>
+<!--Projects Grid Container(Added by javascript rendering)-->
+        <section id="projectsGrid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        </section>
+    </div>
+
+    <script src="mainDash.js"></script>
+</body>    
+</html>

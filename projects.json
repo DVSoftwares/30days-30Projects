@@ -1,0 +1,71 @@
+[
+    {
+        "day": 1,
+        "title": "Colour Flipper",
+        "path": "./Colour Flipper/colour.html",
+        "desc": "Hex code generator and preset palette background switcher.",
+        "tags": ["DOM", "Math.random", "Events"],
+        "completed": true
+    },
+
+    {
+        "day": 2,
+        "title": "Digital Clock",
+        "path": "./Digital clock/clock.html",
+        "desc": "Live system clock with 12h/24h toggle, date formatting and pulse animation.",
+        "tags": ["Date API", "setInterval", "padStart"], 
+        "completed": true
+        
+
+    },
+
+    {
+        "day": 3,
+        "title": "FAQ Dropdown",
+        "path": "./Dropdown/Dropdown.html",
+        "desc": "Smooth Grid accordion with animated chevron rotation.",
+        "tags": ["CSS Grid 0fr/1fr", "closest()", "Accordion"],
+        "completed": true
+
+    },
+
+    {
+        "day": 4,
+        "title": "Password Strength Indicator",
+        "path": "./Password💪/password.html",
+        "desc": "Real-time regex criteria checker and dynamic color strength meter.",
+        "tags": ["RegExp", "input event", "Forms"],
+        "completed": true
+
+    },
+
+    {
+        "day": 5,
+        "title": "Dashboard Root",
+        "path": "./index.html",
+        "desc": "Central responsive dashboard displaying all 30 challenge application.",
+        "tags": ["Dashboard", "Dynamic Render", "Filters"],
+        "completed": true
+
+    },
+
+    {
+        "day": 6,
+        "title": "Modal Pop-up",
+        "path": "#",
+        "desc": "Interactive modal window with backdrop blur and escape key listener.",
+        "tags": ["Upcoming"],
+        "completed": false
+
+    },
+
+    {
+        "day": 7,
+        "title": "Review Carousel",
+        "path": "#",
+        "desc": "Testimonials slider with next, previous, and random buttons.",
+        "tags": ["Upcoming"],
+        "completed": false
+
+    }
+]
