@@ -4,35 +4,49 @@
 
  ##Projects init
 
- []DAY 1
- []DAY 2
- []DAY 3
- []DAY 4
- []DAY 5
- []DAY 6
- []DAY 7
- []DAY 8
- []DAY 9
- []DAY 10
- []DAY 11
- []DAY 12
- []DAY 13
- []DAY 14
- []DAY 15
- []DAY 16
- []DAY 17
- []DAY 18
- []DAY 19
- []DAY 20
- []DAY 21
- []DAY 22
- []DAY 23
- []DAY 24
- []DAY 25
- []DAY 26
- []DAY 27
- []DAY 28
- []DAY 29
- []DAY 30
+
+PART1: UI FOUNDATIONS AND STATE TOGGLES
+ {  Focus: Deepening On DOM traversal, manipulation, basic form handling and CSS
+ []DAY 1 - Hex Color Flipper
+ []DAY 2 - Digital Clock
+ []DAY 3 - FAQ Dropdown/Accordion
+ []DAY 4 - Password Strength Indicator 
+ []DAY 5 - Review Carousel 
+ []DAY 6 - Modal Window Component
+ []DAY 7 - Custom Audio/Video Player
+ []DAY 8 - Responsive navigation Sidebar
+ []DAY 9 - Dynamic Tabs Navigation
+ []DAY 10 - Toast Notification System
+ }
+
+ 
+PART2: LOGIC, ALGORITHMS AND LOCAL STORAGE
+ { Focus: Array methods(filter, map, reduce),conditional game logic locally
+ []DAY 11 - To-Do-List
+ []DAY 12 - Tip and Bill calculator
+ []DAY 13 - Countdown Timer
+ []DAY 14 - Interactive Quiz Game
+ []DAY 15 - Rock Paper Scissors Game
+ []DAY 16 - Budget Tracker App
+ []DAY 17 - Filterable Portfolio Gallery
+ []DAY 18 - Pomodoro Timer
+ []DAY 19 - Note Taking App
+ []DAY 20 - Word and Character Counter
+ }
+
+
+PART3: EXTERNAL API'S AND ADVANCED ASYNCHRONOUS EXECUTION
+ { Focus: fetch(), async/await, manipulating raw JSON responses, handling errors
+ []DAY 21 - Random Quotes Generator 
+ []DAY 22 - Weather Dashboard
+ []DAY 23 - Github Profile Finder
+ []DAY 24 - Currency Exchange Convertor
+ []DAY 25 - Movie Database Browser
+ []DAY 26 - Search Autocomplete Feature
+ []DAY 27 - Infinite Scroll Feed
+ []DAY 28 - Recipe Finder App
+ []DAY 29 - Crypto Price Tracker
+ []DAY 30 - Multi-Page E-Commerce 
+ }
  
  
