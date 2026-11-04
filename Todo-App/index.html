@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modular Todo App - ES Modules</title>
+        <link rel="stylesheet" href="../output.css">
+    </head>
+    <body class="min-h-screen bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white sm-p-10">
+        <main class="max-auto w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blurxl sm:p-8">
+            <header class="mb-12 flex items-center justify-between">
+                <div>
+                    <span class="text-2xl font-bold uppercase tracking-widest text-indigo-400">ES Modules & API</span>
+                    <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Task Trackers</h1>
+                </div>
+                <div id="syncStatus" class="flex items-center gap-2 rounded-full border border-slate-800
+                 bg-slate-950/60 px-3 py-1 text-xs font-medium text-slate-400">
+                    <span class="status-dot h-2 w-2 rounded-full bg-emerald-500"></span>
+                    <span class="status-text">Synced</span>
+                </div>
+            </header>
+
+            <form id="todoForm" class="mb-6 flex gap-2">
+                <input
+                type="text"
+                id="taskInput"
+                required
+                placeholder="Add a new task..."
+                class="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 
+                text-sm text-white placeholder-slate-500 transition focus:border-indigo-500
+                 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                >
+                <button>
+                    Add 
+                </button>
+            </form>
+
+            <div>
+                <div>
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                </div>
+                <span>0 tasks remaining</span>
+            </div>
+            <ul></ul>
+        </main>
+        <script type="module" src="./js/app.js"></script>
+    </body>
+</html>
