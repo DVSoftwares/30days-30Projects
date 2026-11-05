@@ -6,12 +6,12 @@
         <title>Modular Todo App - ES Modules</title>
         <link rel="stylesheet" href="../output.css">
     </head>
-    <body class="min-h-screen bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white sm-p-10">
-        <main class="max-auto w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blurxl sm:p-8">
+    <body class="min-h-screen bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white sm:p-10">
+        <main class="mx-auto w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
             <header class="mb-12 flex items-center justify-between">
                 <div>
-                    <span class="text-2xl font-bold uppercase tracking-widest text-indigo-400">ES Modules & API</span>
-                    <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Task Trackers</h1>
+                    <span class="text-xl font-bold uppercase tracking-widest text-indigo-400">Todo-App</span>
+                    <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Task Tracker</h1>
                 </div>
                 <div id="syncStatus" class="flex items-center gap-2 rounded-full border border-slate-800
                  bg-slate-950/60 px-3 py-1 text-xs font-medium text-slate-400">
@@ -25,25 +25,45 @@
                 type="text"
                 id="taskInput"
                 required
+                maxlength="120"
+                autocomplete="off"
+                pattern=".*\s.*"
+                title="Enter a task that is not just spaces"
                 placeholder="Add a new task..."
                 class="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 
                 text-sm text-white placeholder-slate-500 transition focus:border-indigo-500
                  focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 >
-                <button>
+                <button type="submit"
+                        class="shrink-0 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold
+                         text-white shadow-sm transition hover:bg-indigo-500 active:scale-95 
+                         focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 cursor-pointer"                
+                >
                     Add 
                 </button>
             </form>
 
-            <div>
-                <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+            <div class="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4 text-xs font-medium">
+                <div class="flex items-center gap-1.5">
+                    <button data-filters="all" class="filter-btn rounded-lg bg-indigo-600 px-3 py-1.5 text-white transition cursor-pointer">All</button>
+                    <button data-filters="active" class="filter-btn rounded-lg px-3 py-1.5 border border-slate-800 bg-slate-900 text-slate-400 transition hover:text-white cursor-pointer">Active</button>
+                    <button data-filters="completed" class="filter-btn rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-slate-400 transition hover:text-white cursor-pointer">Completed</button>
                 </div>
-                <span>0 tasks remaining</span>
+
+                <div class="flex items-center gap-4">
+                <span id="itemsCount" aria-live="polite" class="text-slate-400">0 tasks remaining</span>
+                <button type="button" id="clearCompleted" hidden
+                        class="cursor-pointer text-slate-500 transition hover:text-rose-400 focus-visible:outline-2
+                        focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                >
+                    Clear Completed
+                </button>
+                </div>
             </div>
-            <ul></ul>
+
+            <ul id="todoList" class="space-y-2.5">
+            </ul>
+
         </main>
         <script type="module" src="./js/app.js"></script>
     </body>
