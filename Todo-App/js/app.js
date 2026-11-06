@@ -1,28 +1,39 @@
-import { getLocalTodos, saveLocalTodos, postTodoToApi } from "./storage.js";
+//1 app.js (BRAIN)
+//imports
+import { getLocalTodos, saveLocalTodos, postTodoToApi, createId } from "./storage.js";
 import { renderTodos } from "./render.js";
 
-let todos = getLocalTodos();
-let activeFilter = 'all';
+//2 STATE
+let todos = getLocalTodos(); //the tasks, loaded from localStorage when the page opens
+let activeFilter = 'all'; //which tab is selected: 'all' | 'active' | 'completed'
+
+//3 Grab Elements from page.
 
 const form = document.getElementById('todoForm');
 const input = document.getElementById('taskInput');
 const todoList = document.getElementById('todoList');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const syncStatus = document.getElementById('syncStatus');
-const statusDot = document.querySelector('.status-dot');
+const filterBtns = document.querySelectorAll('.filter-btn'); //querySelectorAll gives a LIST of all matches
+
+const clearBtn = document.getElementById('clearCompleted');
+const statusDot = document.querySelector('.status-dot'); //querySelector gives only the FIRST match
 const statusText = document.querySelector('.status-text');
 
+//4 Style Constants
+const FILTER_ACTIVE = 'bg-indigo-600 text-white';
+const Filter_INACTIVE = 'border border-slate-800 bg-slate-900 text-slate-400 hover:text-white';
+
+//One object that describes every sync state, instead of a long if /else chain
+const SYNC_STATES = {
+    syncing:{dot: 'bg-amber-400 animate-pulse', text: 'Posting to API...'},
+    synced:{dot: 'bg-emerald-500', text: 'Synced (HTTP 201)'},
+    error:{dot: 'bg-rose-500', text: 'Sync Failed'},
+};
+//5 setSyncStatus
 function setSyncStatus(state){
-    if (state === 'syncing') {
-        statusDot.className = 'status-dot h-2 w-2 rounded-full bg-emerald-400 animate-pulse'
-        statusText.textContent = 'Posting to API...'
-    }else if (state === 'synced') {
-        statusDot.className = 'status-dot h-2 w-2 rounded-full bg-emerald-500'
-        statusText.textContent = 'Synced (HTTO 201)'
-    }else if (state == 'error') {
-        statusDot.className = 'status-dot h-2 w-2 rounded-full bg-rose-500 '
-        statusText.textContent = 'Sync Failed'
-    }
+    const s = SYNC_STATES[state]; //look up the matching entry
+    if (!s) return;               //unknown state: do nothing 
+    statusDot.className = `status-dot h-2 w-2 rounded-full ${s.dot}`;
+    statusText.textContent = s.text;
 }
 
 form.addEventListener('submit', async(e) => {
@@ -111,3 +122,37 @@ filterBtns.forEach((btn) => {
 });
 
 renderTodos(todos, activeFilter);
+
+
+/**1 app.js
+ * BRAIN -> 1.Keeps the list of tasks in memory (the "state")
+ *          2.listens for what the user does (submit, click, type)
+ *          3.Updates the state, saves it, and asks render.js to redraw
+ * 
+ * PATTERN ->1.Change the data
+ *           2.Save it
+ *           3.Redraw the screen
+ * Learn this p well .How React apps work too.
+ * 
+ * Files: storage.js = saving data
+ *        render.js = drawing
+ *        app.js = logic
+ */
+
+/**2 STATE
+ * "let" because we replace the values later
+ */
+
+/**3 Grab Elements from the page
+ * 
+ */
+
+/**4 Style Constants
+ * Full tailwind class names written out, so Tailwind can find them in this file
+ * 
+ */
+
+/**5 setSyncStatus
+ * Changes the little dot and the text in the top right badge
+ * state must be one of the keys 'syncing', 'synced', 'error'.
+ */
