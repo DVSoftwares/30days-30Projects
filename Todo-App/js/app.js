@@ -1,5 +1,5 @@
 import { getLocalTodos, saveLocalTodos, postTodoToApi } from "./storage.js";
-import { renderTodods } from "./render.js";
+import { renderTodos } from "./render.js";
 
 let todos = getLocalTodos();
 let activeFilter = 'all';
@@ -10,7 +10,7 @@ const todoList = document.getElementById('todoList');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const syncStatus = document.getElementById('syncStatus');
 const statusDot = document.querySelector('.status-dot');
-const statusText = document.querySelectorAll('.status-text');
+const statusText = document.querySelector('.status-text');
 
 function setSyncStatus(state){
     if (state === 'syncing') {
@@ -31,13 +31,13 @@ form.addEventListener('submit', async(e) => {
     if(!title) return;
 
     const newTodo = {
-        id: Date.now.toString(),
+        id: Date.now().toString(),
         title,
         completed: false,
     };
     todos.unshift(newTodo);
     saveLocalTodos(todos);
-    renderTodods(todos, activeFilter);
+    renderTodos(todos, activeFilter);
     input.value = '';
 
     setSyncStatus('syncing');
@@ -47,7 +47,7 @@ form.addEventListener('submit', async(e) => {
         setSyncStatus('synced');
     } catch (err) {
         console.error('[POST Error]:', err);
-        setSyncStatus('Error');
+        setSyncStatus('error');
     }
 });
 
@@ -63,12 +63,12 @@ todoList.addEventListener('click', (e)=> {
     if (action === 'toggle') {
         todos = todos.map((t) => (t.id === todoId ? {...t, completed : !t.completed} : t));
         saveLocalTodos(todos);
-        renderTodods(todos, activeFilter);
+        renderTodos(todos, activeFilter);
     }
     if (action === 'delete') {
         todos = todos.filter((t) => t.id !== todoId);
         saveLocalTodos(todos);
-        renderTodods(todos, activeFilter);
+        renderTodos(todos, activeFilter);
     }
 
     if (action === 'edit') {
@@ -86,12 +86,12 @@ todoList.addEventListener('click', (e)=> {
                 todos = todos.map((t) => (t.id === todoId ? {...t, title: updatedText} : t));
                 saveLocalTodos(todos);
             }
-            renderTodods(todos, activeFilter);
+            renderTodos(todos, activeFilter);
         };
 
     editInput.addEventListener('keydown', (evt) => {
         if(evt.key === 'Enter') saveEdit();
-        if(evt.key === 'Escape') renderTodods(todos, activeFilter);
+        if(evt.key === 'Escape') renderTodos(todos, activeFilter);
     });
 
     editInput.addEventListener('blur', saveEdit, {once: true});
@@ -101,13 +101,13 @@ todoList.addEventListener('click', (e)=> {
 filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
         filterBtns.forEach((b) => {
-            b.className = 'filter-btn rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-slate-400 treansition hover:text-white cursor-pointer';
+            b.className = 'filter-btn rounded-lg border border-slate-800 bg-slate-900 px-3 py-1.5 text-slate-400 transition hover:text-white cursor-pointer';
         });
         btn.className = 'filter-btn rounded-lg bg-indigo-600 px-3 py-1.5 text-white transition cursor-pointer';
 
-        activeFilter = btn.dataset.filter;
-        renderTodods(todos, activeFilter);
+        activeFilter = btn.dataset.filters;
+        renderTodos(todos, activeFilter);
     });
 });
 
-renderTodods(todos, activeFilter);
+renderTodos(todos, activeFilter);

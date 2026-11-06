@@ -7,9 +7,10 @@
         <link rel="stylesheet" href="../output.css">
     </head>
     <body class="min-h-screen bg-slate-950 p-4 font-sans text-slate-100 antialiased selection:bg-indigo-500 selection:text-white sm:p-10">
-        <main class="mx-auto w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+        <main class="mt-7 mx-auto w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl backdrop-blur-xl sm:p-8">
             <header class="mb-12 flex items-center justify-between">
                 <div>
+                    <img src="../Images/DVS lg white.png" class="h-8 w-auto bg-transparent" alt="Logo">
                     <span class="text-xl font-bold uppercase tracking-widest text-indigo-400">Todo-App</span>
                     <h1 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Task Tracker</h1>
                 </div>
@@ -51,7 +52,7 @@
                 </div>
 
                 <div class="flex items-center gap-4">
-                <span id="itemsCount" aria-live="polite" class="text-slate-400">0 tasks remaining</span>
+                <span id="itemsCount" aria-live="polite" class="text-slate-400"></span>
                 <button type="button" id="clearCompleted" hidden
                         class="cursor-pointer text-slate-500 transition hover:text-rose-400 focus-visible:outline-2
                         focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
