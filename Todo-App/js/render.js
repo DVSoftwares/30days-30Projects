@@ -7,7 +7,7 @@ const countElement = document.getElementById('itemsCount');
 //A different message for each filter when the list is empty.
 const EMPTY_MESSAGES = {
     all: 'No tasks yet. Add your first one.',
-    active: 'Nothing left to do.Nice work!',
+    active: 'Nothing left to do. Nice work!',
     completed: 'No completed tasks yet.',
 };
 
@@ -27,7 +27,7 @@ export function renderTodos(todos, activeFilter = 'all') {
     if (filtered.length === 0) {
         //nothing to show: draw one friendly message instead.
         const empty = document.createElement('li');
-        empty.className = 'rounded-2xl border border-slate-800-50 bg-slate-950/40 p-6 text-center text-xs text-slate-500';
+        empty.className = 'rounded-2xl border border-slate-800/50 bg-slate-950/40 p-6 text-center text-xs text-slate-500';
         empty.textContent = EMPTY_MESSAGES[activeFilter] ?? EMPTY_MESSAGES.all;
         listElement.appendChild(empty);
     }else {
@@ -81,11 +81,12 @@ li.innerHTML = `
               <input
                  type="text"
                  aria-label="Edit task"
+                 maxlength="120"
                  class="todo-edit-input hidden w-full rounded-lg border border-indigo-500 bg-slate-950 px-2 py-1 text-sm text-white focus:outline-none"
               >
               </div>
 
-              <div class="flex items-center gap-1.5 opacity-90 sm:opacity-0  transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+              <div class="flex items-center gap-1.5 opacity-90 sm:opacity-60  transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
               <button
               type="button"
               data-action ="edit"
@@ -100,7 +101,7 @@ li.innerHTML = `
               data-action="delete"
               aria-label="Delete task"
               class="rounded-lg p-1.5 text-slate-400 hover:bg-rose-500/20 hover:text-rose-400 transition cursor-pointer"
-              title="Delete task";
+              title="Delete task"
               >
               &#x2715;
               </button>
@@ -110,7 +111,7 @@ li.innerHTML = `
 
             //Now fill the user's text safely 
             li.querySelector('.todo-title').textContent = todo.title;
-            li.querySelector('.todo-dit-input').value = todo.title;
+            li.querySelector('.todo-edit-input').value = todo.title;
             return li;
 }
  

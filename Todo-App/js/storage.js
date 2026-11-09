@@ -12,11 +12,11 @@ export function createId() {
 
 //3  ensureUniqueIds
 function ensureUniqueIds(todos) {
-    const seed = new Set(); //a Set stores each value only once,
+    const seen = new Set(); //a Set stores each value only once,
     return todos.map((t) =>{
         let id = t.id;
-        if(!id || screen.has(id)) id = createId(); //missing or duplicate -> new id
-        screen.add(id);
+        if(!id || seen.has(id)) id = createId(); //missing or duplicate -> new id
+        seen.add(id);
         return{...t, id}; //copy the task and replace its id (spread syntax)
     });
 }  
